@@ -1,16 +1,23 @@
-const chalk = require("chalk");
-let retrun;
-let add = (data,data1) => {
-    console.log(chalk.blue(data)+"+"+chalk.blue(data1)+ "=" + ((data + data1)));
-}
-let subtract = (data,data1) => {
-    console.log(chalk.blue(data)+"-"+chalk.blue(data1)+ "=" + ((data - data1)));
-}
-let multiply = (data, data1) => {
-    console.log(chalk.blue(data)+"X"+chalk.blue(data1)+ "=" + ((data * data1)));
-}
-let divide = (data, data1) => {
-    console.log(chalk.blue(data)+"/"+chalk.blue(data1)+ "=" + ((data / data1)));
-}
+const inquirer = require("inquirer");
 
-module.exports = { add,subtract,multiply,divide,retrun }
+inquirer
+  .prompt([
+    {
+      name: 'whattodo',
+      message: 'What you want to do?',
+      type: 'list',
+      choices:["Addition","Subtraction","Multiplication","Division"]
+    },
+  ])
+  .then(answers => {
+    if(answers.whattodo == "Addition"){
+      const Addition = require("./../module/Addition")
+    }else if(answers.whattodo == "Subtraction"){
+      const Addition = require("./../module/Subtraction")
+    }else if(answers.whattodo == "Multiplication"){
+      const Addition = require("./../module/multiply")
+    }else if(answers.whattodo == "Division"){
+      const Addition = require("./../module/Divide")
+    }
+    //console.info('Answer:', answers.whattodo);
+  });
